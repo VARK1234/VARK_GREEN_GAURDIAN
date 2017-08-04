@@ -48,6 +48,30 @@ public class DBUtils {
 		return null;
 	}
 	
+	public static void insertEvent(Connection con, Event event){
+		try {
+			Statement stmt = null;
+			stmt = con.createStatement();
+			
+			String q = "SELECT max(EVENT_ID) FROM EVENT ";
+			ResultSet rs = stmt.executeQuery(q);
+			int maxEvent= 10000;
+			while(rs.next()){
+				maxEvent = Integer.parseInt(rs.getString(1));
+			}
+			
+			String query = "INSERT INTO EVENT VALUES( '"+(maxEvent+1)+"', '"+event.getLatitude()+"', '"+event.getLongitude()+"', '"+
+					event.getThreatLevel()+"', '"+event.getStatus()+"', '"+event.getAuthorityId()+"', '"+
+					event.getTime()+"', '"+event.getEventType()+"', '"+ event.getDescription()+"' )";
+			
+			stmt.executeUpdate(query);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+	}
+	
 	private static Object getObject(Connection con, Object obj, ResultSet rs){
 		
 		try{
@@ -77,6 +101,7 @@ public class DBUtils {
 					event.setAuthorityId(rs.getString(6));
 					event.setTime(rs.getString(7));
 					event.setEventType(rs.getString(8));
+					event.setDescription(rs.getString(9));
 					list.add(event);
 				}
 				return list;

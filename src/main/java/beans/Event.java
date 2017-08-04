@@ -10,7 +10,14 @@ public class Event {
 	private String status;
 	private String time;
 	private String eventType;
+	private String description;
 	
+	public String getDescription() {
+		return description;
+	}
+	public void setDescription(String description) {
+		this.description = description;
+	}
 	public String getEventType() {
 		return eventType;
 	}
