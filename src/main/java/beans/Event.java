@@ -1,6 +1,6 @@
 package beans;
 
-public class ThreatEvent {
+public class Event {
 
 	private String latitude;
 	private String longitude;
@@ -9,7 +9,14 @@ public class ThreatEvent {
 	private String authorityId;
 	private String status;
 	private String time;
+	private String eventType;
 	
+	public String getEventType() {
+		return eventType;
+	}
+	public void setEventType(String eventType) {
+		this.eventType = eventType;
+	}
 	public String getTime() {
 		return time;
 	}
