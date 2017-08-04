@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Welcome: Name</title>
+<title>Welcome: "${sessionScoped.username}"</title>
 </head>
 <body>
 	<h1>You have logged in successfully</h1>

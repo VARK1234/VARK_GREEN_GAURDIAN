@@ -10,22 +10,25 @@
 </head>
 <body>
 
-	<form action="../logincontroller">
+	<%-- <c:if test="${sessionScope.isLoggedOn!=null}">
+		<c:redirect url="./flowcontroller"></c:redirect>
+	</c:if> --%>
+
+
+	<form action="../logincontroller" method="POST">
 	
-		Enter Username: <input type="text" name="username"></input>
+		Enter Username: <input type="text" name="username"/>
 		
-		Enter password: <input type="password" name="password"></input>
+		Enter password: <input type="password" name="password"/>
 		
 		<input type="hidden" value="login" name="action"/>
 		
-		<input type="submit" value="login" name="login"></input>
+		<input type="submit" value="login"></input>
 		
 	</form>
 	
 	<c:if test="${requestScope.invalidLogin}">
-		
 		<h1>Invalid Login</h1>
-		
 	</c:if>
 	
 
