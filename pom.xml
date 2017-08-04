@@ -26,6 +26,19 @@
     <artifactId>json</artifactId>
     <version>20170516</version>
 </dependency>
+<!-- https://mvnrepository.com/artifact/oracle/ojdbc6 -->
+<!-- https://mvnrepository.com/artifact/com.oracle/ojdbc6 -->
+<!-- https://mvnrepository.com/artifact/com.oracle/ojdbc6 -->
+<!-- https://mvnrepository.com/artifact/com.github.noraui/ojdbc7 -->
+<dependency>
+    <groupId>com.github.noraui</groupId>
+    <artifactId>ojdbc7</artifactId>
+    <version>12.1.0.2</version>
+</dependency>
+
+
+
+
 
   </dependencies>
   <build>

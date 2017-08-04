@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+ "-//Hibernate/Hibernate Mapping DTD//EN"
+ "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd"> 
+
+<hibernate-mapping>
+   <class name="com.onetoone.Address" table="ADDRESS">
+      <meta attribute="class-description">
+         This class contains details of the location.
+      </meta>
+      <id name="id" type="string" column="LOCATION_ID">
+      </id>
+      <property name="longitude" column="LONGITUDE" type="string"/>
+      <property name="latitude" column="LATITUDE" type="string"/>
+      <property name="level" column="LEVEL" type="string"/>
+      <property name="authorityId" column="AUTHORITY_ID" type="string"/>
+      <property name="status" column="STATUS" type="string"/>
+      <property name="time" column="TIME" type="string"/>
+   </class>
+</hibernate-mapping>

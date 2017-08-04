@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+ "-//Hibernate/Hibernate Mapping DTD//EN"
+ "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd"> 
+
+<hibernate-mapping>
+   <class name="com.onetoone.Address" table="ADDRESS">
+      <meta attribute="class-description">
+         This class contains details of the location.
+      </meta>
+      <id name="id" type="string" column="LOCATION_ID">
+      </id>
+      <property name="type" column="TYPE" type="string"/>
+      <many-to-one name="location" column="LOCATION" unique="true" class="ForestAuthority"
+      			not-null="true">
+      </many-to-one>
+   </class>
+</hibernate-mapping>

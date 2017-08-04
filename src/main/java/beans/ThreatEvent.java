@@ -2,16 +2,31 @@ package beans;
 
 public class ThreatEvent {
 
-	private Location currentLocation;
+	private String latitude;
+	private String longitude;
 	private String threatLevel;
 	private String id;
-	private ForestAuthority assignee;
+	private String authorityId;
 	private String status;
-	public Location getCurrentLocation() {
-		return currentLocation;
+	private String time;
+	
+	public String getTime() {
+		return time;
 	}
-	public void setCurrentLocation(Location currentLocation) {
-		this.currentLocation = currentLocation;
+	public void setTime(String time) {
+		this.time = time;
+	}
+	public String getLatitude() {
+		return latitude;
+	}
+	public void setLatitude(String latitude) {
+		this.latitude = latitude;
+	}
+	public String getLongitude() {
+		return longitude;
+	}
+	public void setLongitude(String longitude) {
+		this.longitude = longitude;
 	}
 	public String getThreatLevel() {
 		return threatLevel;
@@ -25,11 +40,12 @@ public class ThreatEvent {
 	public void setId(String id) {
 		this.id = id;
 	}
-	public ForestAuthority getAssignee() {
-		return assignee;
+	
+	public String getAuthorityId() {
+		return authorityId;
 	}
-	public void setAssignee(ForestAuthority assignee) {
-		this.assignee = assignee;
+	public void setAuthorityId(String authorityId) {
+		this.authorityId = authorityId;
 	}
 	public String getStatus() {
 		return status;
