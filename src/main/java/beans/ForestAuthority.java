@@ -7,7 +7,7 @@ public class ForestAuthority {
 	
 	private String id;
 	private Location location;
-	private List<String> type = new ArrayList<>();
+	private String type ;
 	
 	public String getId() {
 		return id;
@@ -21,11 +21,12 @@ public class ForestAuthority {
 	public void setLocation(Location location) {
 		this.location = location;
 	}
-	public List<String> getType() {
+	public String getType() {
 		return type;
 	}
-	public void setType(List<String> type) {
+	public void setType(String type) {
 		this.type = type;
 	}
+	
 
 }
