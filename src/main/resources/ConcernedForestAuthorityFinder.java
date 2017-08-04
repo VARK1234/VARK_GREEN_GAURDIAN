@@ -15,13 +15,13 @@ public class ConcernedForestAuthorityFinder {
 	private static DBConnection dbConnection;
 	
 	public ForestAuthority findForestAuthority(Event)
-	{
+	{ 
 		ForestAuthority concernedAuthority = new ForestAuthority();
 		String city = new CityCalculationService().caluclateCity(location); 
 		location.setCity(city);
 		List<ForestAuthority> forestAuthorities  = new ArrayList<>();
-		dbConnection = new DBConnection();
-		Connection con = null;
+		dbConnection = new DBConnection(); 
+		Connection con = null;  
 		con = dbConnection.getConnection();
 		String query = "select location_id, "
 				+ "longitude, latitude, city from LOCATION "
