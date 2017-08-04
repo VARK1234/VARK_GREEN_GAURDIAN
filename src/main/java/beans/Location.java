@@ -3,11 +3,19 @@ package beans;
 public class Location {
 
 
+	private String locationId;
 	private String longitude;
 	private String latitude;
 	private String city;
 	
 	
+	
+	public String getLocationId() {
+		return locationId;
+	}
+	public void setLocationId(String locationId) {
+		this.locationId = locationId;
+	}
 	public String getLongitude() {
 		return longitude;
 	}
