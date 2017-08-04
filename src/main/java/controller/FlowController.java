@@ -42,7 +42,7 @@ public class FlowController extends HttpServlet {
 		if(!(boolean)session.getAttribute("isLoggedOn")){
 			response.sendRedirect("/pages/login.jsp");
 		}else{
-			request.getRequestDispatcher("/WEB-INF/home.jsp");
+			request.getRequestDispatcher("/WEB-INF/home.jsp").forward(request, response);
 		}
 		
 		

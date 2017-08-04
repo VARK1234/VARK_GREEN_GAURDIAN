@@ -11,11 +11,11 @@
 <body>
 
 	<%-- <c:if test="${sessionScope.isLoggedOn!=null}">
-		<c:redirect url="./flowcontroller"></c:redirect>
+		<c:redirect url="${pageContext.request.contextPath}/flowcontroller"></c:redirect>
 	</c:if> --%>
 
 
-	<form action="../logincontroller" method="POST">
+	<form action="${pageContext.request.contextPath}/logincontroller" method="POST">
 	
 		Enter Username: <input type="text" name="username"/>
 		
