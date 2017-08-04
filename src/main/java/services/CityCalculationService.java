@@ -1,3 +1,5 @@
+package services;
+
 import java.net.*;
 
 import org.json.JSONObject;
@@ -9,7 +11,7 @@ import java.io.*;
 
 public class CityCalculationService {
 	
-	public Strings caluclateCity(Location location) throws Throwable
+	public String caluclateCity(Location location) throws Throwable
 	{
 		String response = "";
 		String url = "https://maps.googleapis.com/maps/api/distancematrix/json?"+"origins="+location.getLatitude()+","+location.getLongitude()+"&destinations=26.439664,80.274440"+"&key="+Constants.DISTANCE_API_KEY;

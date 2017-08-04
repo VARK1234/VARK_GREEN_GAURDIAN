@@ -48,10 +48,16 @@ public class ConcernedForestAuthorityFinder {
 		for(ForestAuthority forestAuthority : forestAuthorities)
 		{ 
 			int tagsFound = 0;
-			HashMap<String, Set<String>> hashMap = new HashMap<>();
-			Set<String> tags = hashMap.get(forestAuthority.getType());
-			List<String> tokens = new ArrayList<>();
-			
+			HashMap<String, Set<String>> tagsHashMap = new HashMap<>();
+			Set<String> tags = tagsHashMap.get(forestAuthority.getType());
+			String[] descriptionTokens = event.getDescription().split(" ");
+			for(int i = 0; i<descriptionTokens.length;i++)
+			{
+				if(tags.contains(descriptionTokens[i]))
+				{
+					tagsFound++;
+				}
+			}
 			if(tagsFound>count)
 			{
 				count = tagsFound;
