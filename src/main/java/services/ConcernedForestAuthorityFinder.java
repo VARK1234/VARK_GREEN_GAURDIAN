@@ -1,3 +1,5 @@
+package services;
+
 import java.sql.Connection;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -12,29 +14,34 @@ import database.DBUtils;
 
 public class ConcernedForestAuthorityFinder {
 	
-	private static DBConnection dbConnection;
+	private static DBConnection dbConnection; 
 	
-	public ForestAuthority findForestAuthority(Event)
+	public ForestAuthority findForestAuthority(Event event) throws Throwable
 	{ 
 		ForestAuthority concernedAuthority = new ForestAuthority();
-		String city = new CityCalculationService().caluclateCity(location); 
-		location.setCity(city);
+		try{
+		
+		Location localLocation = new Location();
+		localLocation.setLatitude(event.getLatitude());
+		localLocation.setLongitude(event.getLongitude());
+		String city = new CityCalculationService().caluclateCity(localLocation); 
+		localLocation.setCity(city);
 		List<ForestAuthority> forestAuthorities  = new ArrayList<>();
 		dbConnection = new DBConnection(); 
 		Connection con = null;  
 		con = dbConnection.getConnection();
 		String query = "select location_id, "
 				+ "longitude, latitude, city from LOCATION "
-				+ " where city = "+location.getCity();
-		List<Location> location = (List<Location>)DBUtils.getDataFromTable(con, new Location(),
+				+ " where city = "+localLocation.getCity();
+		List<Location> locations = (List<Location>)DBUtils.getDataFromTable(con, new Location(),
 				query);
 		String q = "";
-		for(Location loc : location){
+		for(Location loc : locations){
 			q = q + "'"+loc.getLocationId()+"',";
 		}
 		q = q.substring(0, q.length()-1);
 		String forest_authority_query = "SELECT ID, TYPE_C, LOCATION_ID FROM FOREST_AUTHORITY"
-				+ " where location_id in ( "+location.get+")";
+				+ " where location_id in ( "+q+")";
 		forestAuthorities = (List<ForestAuthority>)DBUtils.getDataFromTable(con, new ForestAuthority(),
 				forest_authority_query);
 		int count = 0;
@@ -44,13 +51,21 @@ public class ConcernedForestAuthorityFinder {
 			HashMap<String, Set<String>> hashMap = new HashMap<>();
 			Set<String> tags = hashMap.get(forestAuthority.getType());
 			List<String> tokens = new ArrayList<>();
+			
 			if(tagsFound>count)
 			{
-				count = tagsfound;
+				count = tagsFound;
 				concernedAuthority = forestAuthority;
 			}
 			
 		}
 	}
-
+	
+	
+	catch(Exception e)
+	{
+		
+	}
+	return concernedAuthority;
+	}
 }
