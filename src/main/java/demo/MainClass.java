@@ -25,7 +25,7 @@ class MainClass {
 							+ "longitude, latitude, city from LOCATION "
 							+ " where location_id = '100002' ";
 			String eventQuery = "SELECT EVENT_ID, LATITUDE, LONGITUDE, THREAT_LEVEL,"
-					+ " STATUS, AUTHORITY_ID, LOGGED_TIME, EVENT_TYPE FROM EVENT ";
+					+ " STATUS, AUTHORITY_ID, LOGGED_TIME, EVENT_TYPE, DESCRIPTION FROM EVENT ";
 			String forest_authority_query = "SELECT ID, TYPE_C, LOCATION_ID FROM FOREST_AUTHORITY ";
 			String login_query = "SELECT USER_NAME, ROLE, PASSWORD FROM LOGIN";
 			//*******************
@@ -41,7 +41,7 @@ class MainClass {
 			List<Event> eventList = (List<Event>)DBUtils.getDataFromTable(con, new Event(),
 					eventQuery);
 			for(Event event : eventList){
-				System.out.println(event.getId()+", "+event.getEventType());
+				System.out.println(event.getId()+", "+event.getEventType()+", "+event.getDescription());
 			}
 			//***************
 			System.out.println("********Forest Authority*******");

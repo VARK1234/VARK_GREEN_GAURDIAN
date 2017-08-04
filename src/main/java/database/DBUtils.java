@@ -62,7 +62,7 @@ public class DBUtils {
 			
 			String query = "INSERT INTO EVENT VALUES( '"+(maxEvent+1)+"', '"+event.getLatitude()+"', '"+event.getLongitude()+"', '"+
 					event.getThreatLevel()+"', '"+event.getStatus()+"', '"+event.getAuthorityId()+"', '"+
-					event.getTime()+"', '"+event.getEventType()+"' )";
+					event.getTime()+"', '"+event.getEventType()+"', '"+ event.getDescription()+"' )";
 			
 			stmt.executeUpdate(query);
 		} catch (SQLException e) {
@@ -101,6 +101,7 @@ public class DBUtils {
 					event.setAuthorityId(rs.getString(6));
 					event.setTime(rs.getString(7));
 					event.setEventType(rs.getString(8));
+					event.setDescription(rs.getString(9));
 					list.add(event);
 				}
 				return list;
