@@ -34,8 +34,33 @@ public class LoginController extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		doGet(request, response);
+		
+		String action = request.getParameter("action");
+		
+		if(action.equals("login")){
+			
+			String username = request.getParameter("username");
+			String password = request.getParameter("password");
+			
+			if(username.equals("admin")&&password.equals("admin")){
+				request.setAttribute("username", username);
+				request.setAttribute("password", password);
+				request.getRequestDispatcher("/WEB-INF/home.jsp");
+				
+			}else{
+				request.setAttribute("invalidLogin", true);
+			}
+			
+			
+			
+			
+			
+		}
+		
+		
+		
+		
+		
 	}
 
 }
