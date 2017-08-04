@@ -14,7 +14,7 @@ import database.DBUtils;
 
 public class ConcernedForestAuthorityFinder {
 	
-	private static DBConnection dbConnection;
+	private static DBConnection dbConnection; 
 	
 	public ForestAuthority findForestAuthority(Event event) throws Throwable
 	{ 
