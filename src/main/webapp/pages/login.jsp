@@ -19,10 +19,8 @@
 	</div>
 	</nav>
 	
-
-<%-- 	<c:if test="${sessionScope.isLoggedOn}">
-		<c:redirect url="${pageContext.request.contextPath}/flowcontroller"></c:redirect>
-	</c:if> --%>
+	
+	
 
 
 <br>

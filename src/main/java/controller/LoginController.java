@@ -44,26 +44,24 @@ public class LoginController extends HttpServlet {
 		
 		
 		if(action.equals("logout")){
-			request.getSession().invalidate();
+			session.invalidate();
 			response.sendRedirect("/pages/login.jsp");
 		}
-		
-		if((boolean)session.getAttribute("isLoggedOn")){
-			response.sendRedirect("./flowcontroller?action=home");
-		}
-		
 		
 		if(action.equals("login")){
 			
 			String username = request.getParameter("username");
+			
+			
 			String password = request.getParameter("password");
 			
 			
-			
-			if(new AuthenticationService().authenticateUser(username, password)){
+			String authID = new AuthenticationService().authenticateUser(username, password);
+			if(authID!=null){
 				
-				session.setAttribute("username", username);
-				session.setAttribute("isLoggedOn", true);
+				session.setAttribute("username", username);				
+				
+				session.setAttribute("authID",authID);
 				
 				
 				response.sendRedirect("./flowcontroller?action=home");

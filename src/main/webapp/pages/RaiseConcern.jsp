@@ -14,6 +14,10 @@
 		</div>
 	</div>
 	</nav>
+	
+	
+	
+	
 <div class="jumbotron text-center">
 	<h1>Hello Citizen</h1>
 	<p>Please state your threat/concern</p>
