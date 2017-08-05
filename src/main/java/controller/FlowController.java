@@ -130,6 +130,8 @@ HttpSession session = request.getSession();
 			request.getRequestDispatcher("pages/AckPage.jsp").forward(request, response);
 			
 		}
+		
+		else if(action.equalsIgnoreCase("refine"))
 			
 		
 	}
