@@ -11,7 +11,7 @@ public class AuthenticationService {
 	
 	
 	
-	public boolean authenticateUser(String userId, String password)
+	public String authenticateUser(String userId, String password)
 	{
 		boolean found = false;
 		
@@ -22,9 +22,12 @@ public class AuthenticationService {
 		List<Login> loginList = (List<Login>) DBUtils.getDataFromTable(con, new Login(), loginQuery);
 		
 		
-		
-		
-		return !loginList.isEmpty();
+		if(loginList.isEmpty()){
+			return null;
+		}
+		else{
+			return loginList.get(0).getAuthorityId();
+		}
 	}
 
 }
