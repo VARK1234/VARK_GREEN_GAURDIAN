@@ -13,6 +13,8 @@ import javax.servlet.http.HttpSession;
 
 import beans.Event;
 import beans.ForestAuthority;
+import database.DBConnection;
+import database.DBUtils;
 import services.ConcernedForestAuthorityFinder;
 
 /**
@@ -57,9 +59,22 @@ HttpSession session = request.getSession();
 			
 			String type=request.getParameter("type");
 			
-			String latitude=request.getParameter("latitude");
 			
-			String longitude=request.getParameter("longitude");
+			
+			
+			
+			
+			
+			
+			/*String latitude=request.getParameter("latitude");
+			
+			String longitude=request.getParameter("longitude");*/
+			
+			
+			String latitude="18.597068";
+			
+			
+			String longitude="73.706932";
 			
 			
 			
@@ -84,16 +99,25 @@ HttpSession session = request.getSession();
 				e.printStackTrace();
 			}
 			
+			
+			
+			DBUtils.insertEvent(DBConnection.getConnection(), evt);
+			
 			request.setAttribute("authority",authority);
 			
 			
+			
+			
+			
+			
+			response.getWriter().print(desc  + type + authority.getType() + authority.getLocation().getCity());
 			
 			
 			//TODO processing here
 			//set attributes here
 			//call everything here
 			
-			request.getRequestDispatcher("pages/AckPage.jsp").forward(request, response);
+			//request.getRequestDispatcher("pages/AckPage.jsp").forward(request, response);
 			
 		}
 			

@@ -82,7 +82,7 @@ public class DBUtils {
 				{
 					Location location = new Location();
 					location.setLocationId(rs.getString(1));
-					location.setLocationId(rs.getString(2));
+					location.setLongitude(rs.getString(2));
 					location.setLatitude(rs.getString(3));
 					location.setCity(rs.getString(4));
 					list.add(location);
