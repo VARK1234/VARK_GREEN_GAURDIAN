@@ -3,7 +3,7 @@ package beans;
 public class Login {
 	
 	private String userName;
-	private String role;
+	private String authorityId;
 	private String password;
 	public String getUserName() {
 		return userName;
@@ -11,11 +11,12 @@ public class Login {
 	public void setUserName(String userName) {
 		this.userName = userName;
 	}
-	public String getRole() {
-		return role;
+	
+	public String getAuthorityId() {
+		return authorityId;
 	}
-	public void setRole(String role) {
-		this.role = role;
+	public void setAuthorityId(String authorityId) {
+		this.authorityId = authorityId;
 	}
 	public String getPassword() {
 		return password;

@@ -16,7 +16,7 @@ public class AuthenticationService {
 		boolean found = false;
 		
 		Connection con = DBConnection.getConnection();
-		String loginQuery = "SELECT USER_NAME, PASSWORD, ROLE FROM LOGIN WHERE USER_NAME = '"+userId+"' and PASSWORD = '"
+		String loginQuery = "SELECT USER_NAME, PASSWORD, AUTHORITY_ID FROM LOGIN WHERE USER_NAME = '"+userId+"' and PASSWORD = '"
 				+ password+"'";
 		
 		List<Login> loginList = (List<Login>) DBUtils.getDataFromTable(con, new Login(), loginQuery);

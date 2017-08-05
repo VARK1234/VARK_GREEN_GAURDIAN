@@ -131,7 +131,7 @@ public class DBUtils {
 					Login login = new Login();
 					login.setUserName(rs.getString(1));
 					login.setPassword(rs.getString(2));
-					login.setRole(rs.getString(3));
+					login.setAuthorityId(rs.getString(3));
 					list.add(login);
 				}
 				return list;
