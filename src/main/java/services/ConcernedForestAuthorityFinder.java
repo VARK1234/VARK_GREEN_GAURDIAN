@@ -49,6 +49,7 @@ public class ConcernedForestAuthorityFinder {
 		for(ForestAuthority forestAuthority : forestAuthorities)
 		{ 
 			int tagsFound = 0;
+			CacheClass cacheClass = new CacheClass();
 			HashMap<String, Set<String>> tagsHashMap = (HashMap<String, Set<String>>) CacheClass.getAllDepTags();
 			Set<String> tags = tagsHashMap.get(forestAuthority.getType());
 			String[] descriptionTokens = event.getDescription().split(" ");
