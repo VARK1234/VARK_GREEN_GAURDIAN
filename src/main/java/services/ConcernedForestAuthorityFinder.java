@@ -9,6 +9,7 @@ import java.util.Set;
 import beans.Event;
 import beans.ForestAuthority;
 import beans.Location;
+import dao.CacheClass;
 import database.DBConnection;
 import database.DBUtils;
 
@@ -48,12 +49,13 @@ public class ConcernedForestAuthorityFinder {
 		for(ForestAuthority forestAuthority : forestAuthorities)
 		{ 
 			int tagsFound = 0;
-			HashMap<String, Set<String>> tagsHashMap = new HashMap<>();
+			CacheClass cacheClass = new CacheClass();
+			HashMap<String, Set<String>> tagsHashMap = (HashMap<String, Set<String>>) CacheClass.getAllDepTags();
 			Set<String> tags = tagsHashMap.get(forestAuthority.getType());
 			String[] descriptionTokens = event.getDescription().split(" ");
 			for(int i = 0; i<descriptionTokens.length;i++)
 			{
-				if(tags.contains(descriptionTokens[i]))
+				if((tags).contains(descriptionTokens[i].toLowerCase()))
 				{
 					tagsFound++;
 				}
