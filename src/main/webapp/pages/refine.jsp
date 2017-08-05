@@ -45,7 +45,9 @@
 				</tr>
 				
 				
-
+				<input type="hidden" value="${requestScope(lat) }" name="lat" id="lat"/>
+			<input type="hidden" value="${requestScope(lng) }" name="lng" id="lng"/>
+			<input type="hidden" value="${requestScope(desc) }" name="desc" id="desc"/>
 
 
 			</table>
