@@ -66,15 +66,15 @@ HttpSession session = request.getSession();
 			
 			
 			
-			/*String latitude=request.getParameter("latitude");
+			String latitude=request.getParameter("lat");
 			
-			String longitude=request.getParameter("longitude");*/
-			
-			
-			String latitude="18.597068";
+			String longitude=request.getParameter("lng");
 			
 			
-			String longitude="73.706932";
+			//String latitude="18.597068";
+			
+			
+			//String longitude="73.706932";
 			
 			
 			
@@ -100,24 +100,34 @@ HttpSession session = request.getSession();
 			}
 			
 			
+			evt.setAuthorityId(authority.getId());
+			evt.setStatus("Logged");
+			if(evt.getEventType().equalsIgnoreCase("threat"))
+			{
+				evt.setThreatLevel("4");
+			}
+			else
+			{
+				evt.setThreatLevel("1");
+			}
 			
-			DBUtils.insertEvent(DBConnection.getConnection(), evt);
+			evt.setId(String.valueOf(DBUtils.insertEvent(DBConnection.getConnection(), evt)));
 			
 			request.setAttribute("authority",authority);
 			
+			request.setAttribute("evt",evt);
 			
 			
 			
 			
-			
-			response.getWriter().print(desc  + type + authority.getType() + authority.getLocation().getCity());
+			//response.getWriter().print(desc  + type + authority.getType() + authority.getLocation().getCity());
 			
 			
 			//TODO processing here
 			//set attributes here
 			//call everything here
 			
-			//request.getRequestDispatcher("pages/AckPage.jsp").forward(request, response);
+			request.getRequestDispatcher("pages/AckPage.jsp").forward(request, response);
 			
 		}
 			

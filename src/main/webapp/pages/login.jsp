@@ -1,5 +1,18 @@
 <jsp:directive.include
 	file="header.jspf" />
+	
+	<body id="myPage" data-spy="scroll" data-target=".navbar"
+	data-offset="60">
+
+	<nav class="navbar navbar-default navbar-fixed-top">
+	<div class="container">
+		<div class="navbar-header">
+
+			<a class="navbar-brand" href="${pageContext.request.contextPath}/pages/RaiseConcern.jsp">Green Guardian</a>
+		</div>
+	</div>
+	</nav>
+	
 
 	<%-- <c:if test="${sessionScope.isLoggedOn!=null}">
 		<c:redirect url="${pageContext.request.contextPath}/flowcontroller"></c:redirect>

@@ -1,5 +1,16 @@
 
 <jsp:directive.include file="header.jspf" />
+<body id="myPage" data-spy="scroll" data-target=".navbar"
+	data-offset="60" onload="init()">
+
+	<nav class="navbar navbar-default navbar-fixed-top">
+	<div class="container">
+		<div class="navbar-header">
+
+			<a class="navbar-brand" href="${pageContext.request.contextPath}/pages/RaiseConcern.jsp">Green Guardian</a>
+		</div>
+	</div>
+	</nav>
 <div class="jumbotron text-center">
 	<h1>Hello Citizen</h1>
 	<p>Please state your threat/concern</p>
@@ -24,9 +35,10 @@
 					</div>
 				</td>
 			</tr>
+
 			
-			
-			
+			<input type="hidden" value="" name="lat" id="lat"/>
+			<input type="hidden" value="" name="lng" id="lng"/>
 			
 
 
@@ -35,6 +47,7 @@
 			<input type="submit" class="btn btn-danger" value="raiseconcern"
 				name="action" />
 		</div>
+
 
 
 
@@ -150,23 +163,13 @@
 				marker.setMap(map);
 			}
 		</script>
-		<script
-			src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBu-916DdpKAjTmJNIgngS6HL_kDIKU0aU&amp;callback=myMap"
-			type="text/javascript"></script>
+		
 		<!--
 	To use this code on your website, get a free API key from Google.
 	Read more at: https://www.w3schools.com/graphics/google_maps_basic.asp
 	-->
 
-		<footer class="container-fluid text-center">
-			<a href="#myPage" title="To Top"> <span
-				class="glyphicon glyphicon-chevron-up"></span>
-			</a>
-			<p>
-				Bootstrap Theme Made By <a href="https://www.w3schools.com"
-					title="Visit w3schools">www.w3schools.com</a>
-			</p>
-		</footer>
+		
 
 		<script type="text/javascript">
 			$(document).ready(
@@ -205,7 +208,34 @@
 							});
 						});
 					})
+					
+					
+					
 		</script>
+
+<script>
+function init(){
+
+if (navigator.geolocation) {
+          navigator.geolocation.getCurrentPosition(function(position) {
+            var pos = {
+              lat: position.coords.latitude,
+              lng: position.coords.longitude
+            };
+            document.getElementById("lat").value=pos.lat;
+            document.getElementById("lng").value=pos.lng;
+          }, function() {
+            handleLocationError(true, infoWindow, map.getCenter());
+          });
+        } else {
+		alert("In else");
+          // Browser doesn't support Geolocation
+          handleLocationError(false, infoWindow, map.getCenter());
+        }
+		
+
+}
+</script>
 
 	</div>
 </div>

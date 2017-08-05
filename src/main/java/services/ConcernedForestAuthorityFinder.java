@@ -52,10 +52,10 @@ public class ConcernedForestAuthorityFinder {
 			CacheClass cacheClass = new CacheClass();
 			HashMap<String, Set<String>> tagsHashMap = (HashMap<String, Set<String>>) CacheClass.getAllDepTags();
 			Set<String> tags = tagsHashMap.get(forestAuthority.getType());
-			String[] descriptionTokens = event.getDescription().split(" ");
+			String[] descriptionTokens = event.getDescription().toLowerCase().split(" ");
 			for(int i = 0; i<descriptionTokens.length;i++)
 			{
-				if((tags).contains(descriptionTokens[i].toLowerCase()))
+				if(tags.contains(descriptionTokens[i]))
 				{
 					tagsFound++;
 				}
