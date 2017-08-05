@@ -1,21 +1,43 @@
-
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
-    <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html>
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Login</title>
-</head>
-<body>
+<jsp:directive.include
+	file="header.jspf" />
 
 	<%-- <c:if test="${sessionScope.isLoggedOn!=null}">
 		<c:redirect url="${pageContext.request.contextPath}/flowcontroller"></c:redirect>
 	</c:if> --%>
 
 
-	<form action="${pageContext.request.contextPath}/logincontroller" method="POST">
+<br>
+<br>
+
+<br>
+
+<div align="center">
+<form action="${pageContext.request.contextPath}/logincontroller" method="POST">
+
+<div class="form-group">
+  <label for="usr">UserName:</label>
+  <div class="input-group">
+  <input type="text" class="form-control" name="username">
+  </div>
+</div>
+<div class="form-group">
+  <label for="pwd">Password:</label>
+  <div class="input-group">
+  <input type="password" class="form-control" name="password">
+  </div>
+</div>
+
+
+	<input type="hidden" value="login" name="action"/>
+<div class="input-group-btn">		
+<input type="submit" class="btn btn-danger" value="login"
+				/>
+</div>
+</form>
+</div>
+
+
+	<%-- <form action="${pageContext.request.contextPath}/logincontroller" method="POST">
 	
 		Enter Username: <input type="text" name="username"/>
 		
@@ -25,12 +47,12 @@
 		
 		<input type="submit" value="login"></input>
 		
-	</form>
+	</form> --%>
 	
-	<c:if test="${requestScope.invalidLogin}">
+	<%-- <c:if test="${requestScope.invalidLogin}">
 		<h1>Invalid Login</h1>
 	</c:if>
-	
+	 --%>
 
 </body>
 </html>

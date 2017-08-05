@@ -25,6 +25,7 @@
     <groupId>org.json</groupId>
     <artifactId>json</artifactId>
     <version>20170516</version>
+    <scope>provided</scope>
 </dependency>
 <!-- https://mvnrepository.com/artifact/oracle/ojdbc6 -->
 <!-- https://mvnrepository.com/artifact/com.oracle/ojdbc6 -->
@@ -43,5 +44,17 @@
   </dependencies>
   <build>
     <finalName>com.vark.GreenGuardian</finalName>
+    
+    <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-compiler-plugin</artifactId>
+        <version>3.6.2</version>
+        <configuration>
+          <compilerVersion>1.7</compilerVersion>
+        </configuration>
+      </plugin>
+      
+      
+    
   </build>
 </project>

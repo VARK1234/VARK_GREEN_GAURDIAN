@@ -32,7 +32,7 @@ public class ConcernedForestAuthorityFinder {
 		con = dbConnection.getConnection();
 		String query = "select location_id, "
 				+ "longitude, latitude, city from LOCATION "
-				+ " where city = "+localLocation.getCity();
+				+ " where city = '"+localLocation.getCity()+"'";
 		List<Location> locations = (List<Location>)DBUtils.getDataFromTable(con, new Location(),
 				query);
 		String q = "";

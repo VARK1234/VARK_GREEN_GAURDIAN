@@ -40,6 +40,7 @@ public class LoginController extends HttpServlet {
 		
 		
 		
+		
 		if(action.equals("login")){
 			
 			String username = request.getParameter("username");
@@ -51,7 +52,7 @@ public class LoginController extends HttpServlet {
 				request.getSession().setAttribute("isLoggedOn", true);
 				
 				
-				request.getRequestDispatcher("./flowcontroller").forward(request, response);
+				response.sendRedirect("./flowcontroller?action=home");
 				
 			}else{
 				request.setAttribute("invalidLogin", true);
