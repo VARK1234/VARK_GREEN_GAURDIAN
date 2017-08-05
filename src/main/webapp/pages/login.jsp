@@ -6,15 +6,21 @@
 
 	<nav class="navbar navbar-default navbar-fixed-top">
 	<div class="container">
-		<div class="navbar-header">
+		<div class="navbar-header" style="float:left">
 
 			<a class="navbar-brand" href="${pageContext.request.contextPath}/pages/RaiseConcern.jsp">Green Guardian</a>
 		</div>
+
+		<div class="navbar-header" style="float:right">
+			<a class="navbar-brand" href="${pageContext.request.contextPath}/pages/login.jsp">login</a>
+		</div>
+		
+		
 	</div>
 	</nav>
 	
 
-	<%-- <c:if test="${sessionScope.isLoggedOn!=null}">
+<%-- 	<c:if test="${sessionScope.isLoggedOn}">
 		<c:redirect url="${pageContext.request.contextPath}/flowcontroller"></c:redirect>
 	</c:if> --%>
 
@@ -30,13 +36,13 @@
 <div class="form-group">
   <label for="usr">UserName:</label>
   <div class="input-group">
-  <input type="text" class="form-control" name="username">
+  <input type="text" class="form-control" name="username" required="required">
   </div>
 </div>
 <div class="form-group">
   <label for="pwd">Password:</label>
   <div class="input-group">
-  <input type="password" class="form-control" name="password">
+  <input type="password" class="form-control" name="password" required="required">
   </div>
 </div>
 

@@ -8,7 +8,7 @@
 			<div class="navbar-header">
 
 				<a class="navbar-brand"
-					href="${pageContext.request.contextPath}/pages/refine.jsp">Green
+					href="${pageContext.request.contextPath}/pages/RaiseConcern.jsp">Green
 					Guardian</a>
 			</div>
 		</div>
@@ -37,10 +37,10 @@
 				<tr>
 					<td><select name="authorityType" id="authorityType" >
 							<option value="select">--Select--</option>
-							<option value="1">Fire Prevention</option>
-							<option value="2">Poaching Prevention</option>
-							<option value="3">Medical Attention for the animal</option>
-							<option value="4">Infrastructure related Help</option></td>
+							<option value="FIRE">Fire Prevention</option>
+							<option value="POACHING">Poaching Prevention</option>
+							<option value="MEDICAL">Medical Attention for the animal</option>
+							<option value="INFRASTRUCTURE">Infrastructure related Help</option></td>
 					</select>
 				</tr>
 				
@@ -53,15 +53,6 @@
 				<input type="submit" class="btn btn-danger" value="refine"
 					name="action" />
 			</div>
-
-
-
-
-			<!-- Add Maps here  -->
-
-
-
-
 
 		</form>
 	</div>

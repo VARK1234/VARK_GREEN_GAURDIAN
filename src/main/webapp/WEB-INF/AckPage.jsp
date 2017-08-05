@@ -10,6 +10,9 @@
 
 			<a class="navbar-brand" href="${pageContext.request.contextPath}/pages/RaiseConcern.jsp">Green Guardian</a>
 		</div>
+		<div class="navbar-header" style="float:right">
+			<a class="navbar-brand" href="${pageContext.request.contextPath}/pages/login.jsp">login</a>
+		</div>
 	</div>
 	</nav>
 

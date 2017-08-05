@@ -13,9 +13,11 @@ import javax.servlet.http.HttpSession;
 
 import beans.Event;
 import beans.ForestAuthority;
+import beans.Location;
 import database.DBConnection;
 import database.DBUtils;
 import services.ConcernedForestAuthorityFinder;
+import services.DistanceCalculatorService;
 
 /**
  * Servlet implementation class FlowController
@@ -99,7 +101,13 @@ HttpSession session = request.getSession();
 				e.printStackTrace();
 			}
 			
+			if(authority.getId()==null){
+				request.getRequestDispatcher("/pages/refine.jsp").forward(request, response);
+				return;
+			}
 			
+			
+
 			evt.setAuthorityId(authority.getId());
 			evt.setStatus("Logged");
 			if(evt.getEventType().equalsIgnoreCase("threat"))
@@ -127,11 +135,98 @@ HttpSession session = request.getSession();
 			//set attributes here
 			//call everything here
 			
-			request.getRequestDispatcher("pages/AckPage.jsp").forward(request, response);
+			request.getRequestDispatcher("/WEB-INF/AckPage.jsp").forward(request, response);
+			
+			
+			
+		}
+		else if (action.equalsIgnoreCase("refine"))
+		{
+			try{
+				String desc = request.getParameter("desc");
+				
+				String type=request.getParameter("type");
+				
+				String authorityType = request.getParameter("authorityType");
+				
+				
+				
+				
+				
+				
+				String latitude=request.getParameter("lat");
+				
+				String longitude=request.getParameter("lng");
+				
+				
+				//String latitude="18.597068";
+				
+				
+				//String longitude="73.706932";
+				
+				
+				
+				
+				Event evt = new Event();
+				
+				evt.setEventType(type);
+				evt.setDescription(desc);
+				evt.setLatitude(latitude);
+				evt.setLongitude(longitude);
+				
+				SimpleDateFormat sdf = new SimpleDateFormat("dd/MMM/yyyy HH:mm");    
+
+				Date resultdate = new Date(System.currentTimeMillis());
+				
+				
+				evt.setTime(sdf.format(resultdate));
+				ForestAuthority authority=null;
+				Location loc1 = new Location();
+				loc1.setLongitude(longitude);
+				loc1.setLatitude(latitude);
+				
+				authority = new ConcernedForestAuthorityFinder().refineAuthorityFinder(evt, authorityType);
+				
+
+				evt.setAuthorityId(authority.getId());
+				evt.setStatus("Logged");
+				if(evt.getEventType().equalsIgnoreCase("threat"))
+				{
+					evt.setThreatLevel("4");
+				}
+				else
+				{
+					evt.setThreatLevel("1");
+				}
+				
+				evt.setId(String.valueOf(DBUtils.insertEvent(DBConnection.getConnection(), evt)));
+				
+				request.setAttribute("authority",authority);
+				
+				request.setAttribute("evt",evt);
+				
+				
+				
+				
+				//response.getWriter().print(desc  + type + authority.getType() + authority.getLocation().getCity());
+				
+				
+				//TODO processing here
+				//set attributes here
+				//call everything here
+				
+				request.getRequestDispatcher("/WEB-INF/AckPage.jsp").forward(request, response);
+				
+				
+			}catch(Throwable e){
+				e.printStackTrace();
+			}	
+			
+			
 			
 		}
 		
-		else if(action.equalsIgnoreCase("refine"))
+		
 			
 		
 	}

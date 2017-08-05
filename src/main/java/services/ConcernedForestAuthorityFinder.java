@@ -77,7 +77,7 @@ public class ConcernedForestAuthorityFinder {
 	return concernedAuthority;
 	}
 	
-	public ForestAuthority refineAuthorityFinder(Event event) throws Throwable
+	public ForestAuthority refineAuthorityFinder(Event event, String authorityType) throws Throwable
 	{
 		 
 		ForestAuthority concernedAuthority = new ForestAuthority();
@@ -114,13 +114,14 @@ public class ConcernedForestAuthorityFinder {
 		for(ForestAuthority forestAuthority : forestAuthorities)
 		{
 			double distance = 0;
-			
+			if(authorityType.equalsIgnoreCase(forestAuthority.getType())){
 			distance = new DistanceCalculatorService().findDistance(eventLoc, forestAuthority.getLocation());
 			if(distance>min)
 			{
 				min = distance;
 				concernedAuthority = forestAuthority;
 			}
+		}
 		}
 	}
 	

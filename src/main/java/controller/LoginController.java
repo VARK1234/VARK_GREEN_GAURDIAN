@@ -6,6 +6,9 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
+import services.AuthenticationService;
 
 /**
  * Servlet implementation class LoginController
@@ -36,9 +39,18 @@ public class LoginController extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		String action = request.getParameter("action");
+		HttpSession session = request.getSession();
 		
 		
 		
+		if(action.equals("logout")){
+			request.getSession().invalidate();
+			response.sendRedirect("/pages/login.jsp");
+		}
+		
+		if((boolean)session.getAttribute("isLoggedOn")){
+			response.sendRedirect("./flowcontroller?action=home");
+		}
 		
 		
 		if(action.equals("login")){
@@ -46,10 +58,12 @@ public class LoginController extends HttpServlet {
 			String username = request.getParameter("username");
 			String password = request.getParameter("password");
 			
-			if(username.equals("admin")&&password.equals("admin")){
+			
+			
+			if(new AuthenticationService().authenticateUser(username, password)){
 				
-				request.getSession().setAttribute("username", username);
-				request.getSession().setAttribute("isLoggedOn", true);
+				session.setAttribute("username", username);
+				session.setAttribute("isLoggedOn", true);
 				
 				
 				response.sendRedirect("./flowcontroller?action=home");

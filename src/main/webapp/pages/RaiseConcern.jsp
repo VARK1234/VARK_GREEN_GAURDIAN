@@ -9,6 +9,9 @@
 
 			<a class="navbar-brand" href="${pageContext.request.contextPath}/pages/RaiseConcern.jsp">Green Guardian</a>
 		</div>
+		<div class="navbar-header" style="float:right">
+			<a class="navbar-brand" href="${pageContext.request.contextPath}/pages/login.jsp">login</a>
+		</div>
 	</div>
 	</nav>
 <div class="jumbotron text-center">
@@ -151,8 +154,8 @@
 				var mapProp = {
 					center : myCenter,
 					zoom : 12,
-					scrollwheel : false,
-					draggable : false,
+					scrollwheel : true,
+					draggable : true,
 					mapTypeId : google.maps.MapTypeId.ROADMAP
 				};
 				var map = new google.maps.Map(document
@@ -164,10 +167,6 @@
 			}
 		</script>
 		
-		<!--
-	To use this code on your website, get a free API key from Google.
-	Read more at: https://www.w3schools.com/graphics/google_maps_basic.asp
-	-->
 
 		
 

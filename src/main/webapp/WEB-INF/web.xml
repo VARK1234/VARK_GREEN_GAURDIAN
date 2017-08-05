@@ -774,4 +774,14 @@ standard deployment descriptor.
 -->
 <web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:web="http://xmlns.jcp.org/xml/ns/javaee" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd">
   <display-name>Archetype Created Web Application</display-name>
+  
+  <error-page>
+  <error-code>404</error-code>
+  <location>/WEB-INF/ErrorPage404.jsp</location>
+</error-page>
+<error-page>
+  <error-code>500</error-code>
+  <location>/WEB-INF/ErrorPage500.jsp</location>
+</error-page>
+  
 </web-app>
