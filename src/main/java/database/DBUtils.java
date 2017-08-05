@@ -48,19 +48,20 @@ public class DBUtils {
 		return null;
 	}
 	
-	public static void insertEvent(Connection con, Event event){
+	public static int insertEvent(Connection con, Event event){
+		int maxEvent= 1;
 		try {
 			Statement stmt = null;
 			stmt = con.createStatement();
 			
 			String q = "SELECT max(EVENT_ID) FROM EVENT ";
 			ResultSet rs = stmt.executeQuery(q);
-			int maxEvent= 10000;
+			
 			while(rs.next()){
-				maxEvent = Integer.parseInt(rs.getString(1));
+				maxEvent = Integer.parseInt(rs.getString(1))+1;
 			}
 			
-			String query = "INSERT INTO EVENT VALUES( '"+(maxEvent+1)+"', '"+event.getLatitude()+"', '"+event.getLongitude()+"', '"+
+			String query = "INSERT INTO EVENT VALUES( '"+(maxEvent)+"', '"+event.getLatitude()+"', '"+event.getLongitude()+"', '"+
 					event.getThreatLevel()+"', '"+event.getStatus()+"', '"+event.getAuthorityId()+"', '"+
 					event.getTime()+"', '"+event.getEventType()+"', '"+ event.getDescription()+"' )";
 			
@@ -69,7 +70,7 @@ public class DBUtils {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
+		return maxEvent;
 	}
 	
 	private static Object getObject(Connection con, Object obj, ResultSet rs){

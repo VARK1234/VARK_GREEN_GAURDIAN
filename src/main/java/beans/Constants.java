@@ -14,5 +14,6 @@ public class Constants {
 	public static final String FOREST_AUTHORITY_POACHING = "POACHING";
 	public static final String FOREST_AUTHORITY_MEDICAL = "MEDICAL";
 	public static final String FOREST_AUTHORITY_INFRASTRUCTURE = "INFRASTRUCTURE";
+	public static final String DISTANCE_API_KEY = "AIzaSyAKbAisI31pWgEm_oqEiokhKVLEHjvYGo8";
 	
 }
