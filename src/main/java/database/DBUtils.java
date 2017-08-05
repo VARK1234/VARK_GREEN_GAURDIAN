@@ -49,7 +49,7 @@ public class DBUtils {
 	}
 	
 	public static int insertEvent(Connection con, Event event){
-		int maxEvent= 1;
+		int maxEvent= 300000;
 		try {
 			Statement stmt = null;
 			stmt = con.createStatement();
@@ -58,7 +58,9 @@ public class DBUtils {
 			ResultSet rs = stmt.executeQuery(q);
 			
 			while(rs.next()){
-				maxEvent = Integer.parseInt(rs.getString(1))+1;
+				if(rs.getString(1) != null){
+					maxEvent = Integer.parseInt(rs.getString(1))+1;
+				}
 			}
 			
 			String query = "INSERT INTO EVENT VALUES( '"+(maxEvent)+"', '"+event.getLatitude()+"', '"+event.getLongitude()+"', '"+
