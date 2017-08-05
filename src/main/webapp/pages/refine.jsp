@@ -14,9 +14,9 @@
 		</div>
 	</nav>
 	<div class="jumbotron text-center">
-		<h1>Sorry for the inconvenience citizen we were unable to process
-			your request can you please fill the form below so that we can help
-			you</h1>
+		<h2 style="color: white;">Sorry for the inconvenience citizen we
+			were unable to process your request can you please fill the form
+			below so that we can help you</h2>
 
 		<form action="${pageContext.request.contextPath}/flowcontroller"
 			method="POST">
@@ -34,22 +34,22 @@
 						</div>
 					</td>
 				</tr>
-				<tr>
-					<td><select name="authorityType" id="authorityType" >
-							<option value="select">--Select--</option>
+					<div class="form-group">
+					<div class="form-control" >
+						<label for="sel1">Select list:</label> 
+						<select name="authorityType">
 							<option value="FIRE">Fire Prevention</option>
 							<option value="POACHING">Poaching Prevention</option>
 							<option value="MEDICAL">Medical Attention for the animal</option>
-							<option value="INFRASTRUCTURE">Infrastructure related Help</option></td>
-					</select>
-				</tr>
-				
-				
-				<input type="hidden" value="${requestScope.lat }" name="lat" id="lat"/>
-			<input type="hidden" value="${requestScope.lng }" name="lng" id="lng"/>
-			<input type="hidden" value="${requestScope.desc }" name="desc" id="desc"/>
+							<option value="INFRASTRUCTURE">Infrastructure related Help</option>
+						</select>
+					</div>
+					</div>
 
-
+					<input type="hidden" value="${requestScope.lat }" name="lat"
+						id="lat" /> <input type="hidden" value="${requestScope.lng }"
+						name="lng" id="lng" /> <input type="hidden"
+						value="${requestScope.desc }" name="desc" id="desc" />
 			</table>
 			<div class="input-group-btn">
 				<input type="submit" class="btn btn-danger" value="refine"
